@@ -1,0 +1,57 @@
+package org.firstinspires.ftc.teamcode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+//import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
+@TeleOp
+public class Elevator extends LinearOpMode {
+    DcMotor elevatorMotor;
+    Servo elevatorServo;
+    double elevatorPosition=0;
+    @Override                                            //counter clockwise up clockwise down
+    public void runOpMode() {
+        elevatorMotor = hardwareMap.get(DcMotor.class, "elevatorMotor");
+        elevatorServo = hardwareMap.get(Servo.class,"elevatorServo");
+        telemetry.addData("Status", "Initialized");
+        telemetry.update();
+        elevatorMotor.setPower(1.0);
+        waitForStart();
+        elevatorMotor.setPower(0.0);
+        elevatorMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        elevatorMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        while (opModeIsActive()) {
+            if (gamepad2.dpad_down){
+                elevatorServo.setPosition(1);
+            } else {
+                elevatorServo.setPosition(0);
+            }
+            if (gamepad2.dpad_up){
+                elevatorServo.setPosition(1);
+            } else {
+                elevatorServo.setPosition(0);
+            }
+            if (gamepad2.right_bumper) {
+                elevatorMotor.setDirection(DcMotor.Direction.REVERSE);
+                elevatorMotor.setTargetPosition(2000);
+                elevatorMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                elevatorMotor.setPower(0.5);
+                while (elevatorMotor.isBusy()) {
+                }
+                elevatorMotor.setPower(0.0);
+            }
+            if (gamepad2.left_bumper) {
+                elevatorMotor.setDirection(DcMotor.Direction.FORWARD);
+                elevatorMotor.setTargetPosition(2000);
+                elevatorMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                elevatorMotor.setPower(0.5);
+                while (elevatorMotor.isBusy()) {
+                }
+                elevatorMotor.setPower(0.0);
+            }
+            telemetry.addData("dpad_up", gamepad2.dpad_up);
+            telemetry.addData("dpad_down", gamepad2.dpad_down);
+        }
+    }
+}
