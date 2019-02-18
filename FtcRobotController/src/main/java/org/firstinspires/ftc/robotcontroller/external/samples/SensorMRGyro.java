@@ -120,7 +120,6 @@ public class SensorMRGyro extends LinearOpMode {
       int rawZ = modernRoboticsI2cGyro.rawZ();
       int heading = modernRoboticsI2cGyro.getHeading();
       int integratedZ = modernRoboticsI2cGyro.getIntegratedZValue();
-
       // Read dimensionalized data from the gyro. This gyro can report angular velocities
       // about all three axes. Additionally, it internally integrates the Z axis to
       // be able to report an absolute angular Z orientation.

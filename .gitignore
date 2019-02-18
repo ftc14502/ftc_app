@@ -1,21 +1,28 @@
+# built application files
+*.apk
+*.ap_
 
-libs/*
-TeamCode/build/*
-FtcRobotController/build/*
-build/*
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
 local.properties
-.idea/codeStyles/Project.xml
-.idea/gradle.xml
-.idea/misc.xml
-.idea/modules.xml
-.idea/runConfigurations.xml
-.idea/vcs.xml
-.idea/workspace.xml
-.gradle/3.5/file-changes/last-build.bin
-.gradle/3.5/taskHistory/taskHistory.lock
-.gradle/buildOutputCleanup/built.bin
-.gradle/buildOutputCleanup/cache.properties
-.gradle/buildOutputCleanup/cache.properties.lock
-ftc_app.iml
-FtcRobotController/FtcRobotController.iml
-TeamCode/TeamCode.iml
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Android Studio
+*.iml
+.idea
+.gradle
+build/
+
+*ASUS_PC_01*
+
